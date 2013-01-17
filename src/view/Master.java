@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import algorithms.Genetic;
 import algorithms.HillClimb;
 
 public class Master {
@@ -30,6 +32,7 @@ public class Master {
 	private final static Master instance = new Master();
 	private char[][] casas;
 	private JLabel lblHillClimbTime;
+	private JLabel lblGeneticTime;
 	
 	public static void main(String[] args) {
 		Master window = Master.getInstance();
@@ -78,38 +81,40 @@ public class Master {
 		createSudokuPanel(jpProblem, 220, 6);		
 		frmSudoku.getContentPane().add(jpProblem);
 		
-		jpGenetic = new JPanel();
-		jpGenetic.setBackground(Color.WHITE);
-		createSudokuPanel(jpGenetic, 6, 258);
-		frmSudoku.getContentPane().add(jpGenetic);
-		
+
 		jpHillClimb = new JPanel();
 		jpHillClimb.setBackground(Color.WHITE);
-		createSudokuPanel(jpHillClimb, 444, 258);
+		createSudokuPanel(jpHillClimb, 220, 280);
 		frmSudoku.getContentPane().add(jpHillClimb);
-
-		JLabel lblAlgortmoGentico = new JLabel("Algor\u00EDtmo Gen\u00E9tico");
-		lblAlgortmoGentico.setBounds(6, 230, 200, 16);
-		frmSudoku.getContentPane().add(lblAlgortmoGentico);
-
-		JLabel lblTempo = new JLabel("Tempo:");
-		lblTempo.setBounds(6, 470, 61, 16);
-		frmSudoku.getContentPane().add(lblTempo);
-
-		JLabel lblGeneticTime = new JLabel("0 segundos");
-		lblGeneticTime.setBounds(58, 470, 148, 16);
-		frmSudoku.getContentPane().add(lblGeneticTime);
+		
+//		jpGenetic = new JPanel();
+//		jpGenetic.setBackground(Color.WHITE);
+//		createSudokuPanel(jpGenetic, 6, 258);
+//		frmSudoku.getContentPane().add(jpGenetic);
+//		
+//
+//		JLabel lblAlgortmoGentico = new JLabel("Algor\u00EDtmo Gen\u00E9tico");
+//		lblAlgortmoGentico.setBounds(6, 230, 200, 16);
+//		frmSudoku.getContentPane().add(lblAlgortmoGentico);
+//
+//		JLabel lblTempo = new JLabel("Tempo:");
+//		lblTempo.setBounds(6, 470, 61, 16);
+//		frmSudoku.getContentPane().add(lblTempo);
+//
+//		lblGeneticTime = new JLabel("0 segundos");
+//		lblGeneticTime.setBounds(58, 470, 148, 16);
+//		frmSudoku.getContentPane().add(lblGeneticTime);
 
 		JLabel label_1 = new JLabel("Tempo:");
-		label_1.setBounds(444, 470, 61, 16);
+		label_1.setBounds(220, 494, 61, 16);
 		frmSudoku.getContentPane().add(label_1);
 
 		lblHillClimbTime = new JLabel("0 segundos\n");
-		lblHillClimbTime.setBounds(496, 470, 154, 16);
+		lblHillClimbTime.setBounds(272, 494, 154, 16);
 		frmSudoku.getContentPane().add(lblHillClimbTime);
 
 		JLabel lblAlgortmoHillClimb = new JLabel("Algor\u00EDtmo Hill Climb");
-		lblAlgortmoHillClimb.setBounds(444, 230, 200, 16);
+		lblAlgortmoHillClimb.setBounds(252, 259, 130, 16);
 		frmSudoku.getContentPane().add(lblAlgortmoHillClimb);
 
 		JButton btnResolver = new JButton("Resolver");
@@ -139,6 +144,32 @@ public class Master {
 					Master window = Master.getInstance();
 					window.frmSudoku.setVisible(false);
 					window.frmSudoku.setVisible(true);
+					
+					
+//					start = System.nanoTime();
+//					awnser = Genetic.getInstance().solveProblem(casas);
+//					end = System.nanoTime();
+//					
+//					lblGeneticTime.setText((end-start)/1e9+" segundos");
+//										
+//					jpHillClimb.removeAll();
+//					for (int i = 0; i < 9; i++) {
+//						for (int j = 0; j < 9; j++) {
+//							JLabel label;
+//							if(awnser[i][j] == '#'){
+//								label = new JLabel("");
+//							} else {
+//								label = new JLabel(String.valueOf(awnser[i][j]));
+//							}
+//							label.setSize(23, 23);
+//							label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//							jpHillClimb.add(label);
+//						}
+//					}
+//					window = Master.getInstance();
+//					window.frmSudoku.setVisible(false);
+//					window.frmSudoku.setVisible(true);
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();

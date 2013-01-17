@@ -1,12 +1,23 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Specimen implements Comparable<Specimen> {
-	private char[][] chromosome = new char[9][9];
+	private List<Gem> chromosome = new ArrayList<Gem>();
 	private Integer errors;
 	private float adaptation;
 			
-	public Specimen(char[][] chromosome) {
+	public Specimen(List<Gem> chromosome) {
 		super();
+		if(chromosome.size() < 81) {
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					chromosome.add(new Gem('#', i, j));
+				}
+			}
+		}
 		this.setChromosome(chromosome);
 	}
 	
@@ -20,14 +31,6 @@ public class Specimen implements Comparable<Specimen> {
 	public int compareTo(Specimen o) {
 		return errors.compareTo(o.errors);
 	}
-	public char[][] getChromosome() {
-		return chromosome;
-	}
-	
-	public void setChromosome(char[][] chromosome) {
-		this.chromosome = chromosome;
-	}
-
 	public float getAdaptation() {
 		return adaptation;
 	}
@@ -35,4 +38,12 @@ public class Specimen implements Comparable<Specimen> {
 	public void setAdaptation(float d) {
 		this.adaptation = d;
 	}
+
+	public List<Gem> getChromosome() {
+		return chromosome;
+	}
+
+	public void setChromosome(List<Gem> chromosome) {
+		this.chromosome = chromosome;
+	}	
 }
